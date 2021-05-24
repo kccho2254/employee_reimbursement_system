@@ -1,0 +1,47 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+
+footer {
+  background-color: white;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 65px;
+  width: 100%;
+  overflow: hidden;
+}
+
+footer section img {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    width: 30px;
+    height: 30px;
+}
+
+footer section {
+    justify-content: center;
+    opacity: .9;
+    background-color: white;
+    display: flex;
+}
+
+div.jumbotron {
+  margin: 32px 0 32px 0;
+  padding: 32px 32px 32px 32px;
+  border-radius: 0%;
+}
+#backgroundImg {
+  opacity: .8;
+  background-image: url('./images/clouds.jpg');
+}
+
+ul.nav.nav-tabs {
+  margin-top: 20px;
+}
+
+.tabContent {
+  display: none;
+}
