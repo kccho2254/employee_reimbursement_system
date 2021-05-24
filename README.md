@@ -37,19 +37,19 @@ Employees must select the type of reimbursement as: LODGING, TRAVEL, FOOD, or OT
 
 **Logical Model**
 
-![](./guide/imgs/logical.jpg)
+![](./imgs/logical.jpg)
 
 **Physical Model**
 
-![](./guide/imgs/physical.jpg)
+![](./imgs/physical.jpg)
 
 **Use Case Diagram**
 
-![](./guide/imgs/use-case.jpg)
+![](./imgs/use-case.jpg)
 
 **Activity Diagram**
 
-![](./guide/imgs/activity.jpg)
+![](./imgs/activity.jpg)
 
 ## Technical Details
 
