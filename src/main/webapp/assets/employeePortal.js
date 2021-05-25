@@ -67,8 +67,9 @@ function populatePastReims(response) {
 
   let filteredResTwo = filteredRes.filter(function(n) {
 
-    return (n.reimb_resolver !== 0);
+    return (n.reimb_resolver != 0);
   })
+  console.log("past reim" + filteredResTwo);
 
   for (i = 0; i < filteredResTwo.length; i++) {
     let data = ` 
@@ -79,13 +80,14 @@ function populatePastReims(response) {
           <td>${filteredResTwo[i].reimb_desc}</td>
           <td>$${filteredResTwo[i].reimb_amount}</td>
           <td>${filteredResTwo[i].type}</td>
+          <td>${filteredResTwo[i].status}</td>
       </tr>
   `;
 
     let res = data.replaceAll(",", "/");
     arrTwo.push(res);
   }
-  document.getElementById('pastData').innerHTML = arr;
+  document.getElementById('pastData').innerHTML = arrTwo;
 
   if (filteredResTwo.length === 0) {
     document.getElementById('pastData').innerHTML = `
@@ -283,5 +285,5 @@ function showStuff(element) {
   document.getElementById(tabContentIdToShow).style.display = 'flex';
 }
 
-getPastReims();
 getPendingReims();
+getPastReims();
