@@ -1,0 +1,87 @@
+-- ers_schema.ers_reimbursement definition
+
+-- Drop table
+
+-- DROP TABLE ers_schema.ers_reimbursement;
+
+CREATE TABLE ers_schema.ers_reimbursement (
+	id serial NOT NULL,
+	reimb_amount float8 NOT NULL,
+	reimb_submitted timestamp(0) NOT NULL,
+	reimb_description varchar NOT NULL,
+	reimb_resolved timestamp(0) NULL,
+	reimb_receipt bytea NULL,
+	reimb_author int4 NOT NULL,
+	reimb_resolver int4 NULL,
+	reimb_status_id int4 NOT NULL,
+	reimb_type_id int4 NOT NULL,
+	CONSTRAINT ers_reimbursement_pk PRIMARY KEY (id)
+);
+
+
+-- ers_schema.ers_reimbursement foreign keys
+
+ALTER TABLE ers_schema.ers_reimbursement ADD CONSTRAINT ers_author_fk FOREIGN KEY (reimb_author) REFERENCES ers_schema.ers_users(id) ON UPDATE CASCADE;
+ALTER TABLE ers_schema.ers_reimbursement ADD CONSTRAINT ers_resolver_fk FOREIGN KEY (reimb_resolver) REFERENCES ers_schema.ers_users(id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE ers_schema.ers_reimbursement ADD CONSTRAINT ers_status_fk FOREIGN KEY (reimb_status_id) REFERENCES ers_schema.ers_reimbursement_status(reimb_status_id) ON UPDATE CASCADE;
+ALTER TABLE ers_schema.ers_reimbursement ADD CONSTRAINT ers_type_fk FOREIGN KEY (reimb_type_id) REFERENCES ers_schema.ers_reimbursement_type(reimb_type_id) ON UPDATE CASCADE;
+
+-- ers_schema.ers_reimbursement_status definition
+
+-- Drop table
+
+-- DROP TABLE ers_schema.ers_reimbursement_status;
+
+CREATE TABLE ers_schema.ers_reimbursement_status (
+	reimb_status_id serial NOT NULL,
+	reimb_status varchar(10) NOT NULL,
+	CONSTRAINT ers_reimbursement_status_pk PRIMARY KEY (reimb_status_id)
+);
+
+-- ers_schema.ers_reimbursement_type definition
+
+-- Drop table
+
+-- DROP TABLE ers_schema.ers_reimbursement_type;
+
+CREATE TABLE ers_schema.ers_reimbursement_type (
+	reimb_type_id serial NOT NULL,
+	reimb_type varchar(100) NOT NULL,
+	CONSTRAINT ers_reimbursement_type_pk PRIMARY KEY (reimb_type_id)
+);
+
+-- ers_schema.ers_user_roles definition
+
+-- Drop table
+
+-- DROP TABLE ers_schema.ers_user_roles;
+
+CREATE TABLE ers_schema.ers_user_roles (
+	id serial NOT NULL,
+	user_role varchar(100) NOT NULL,
+	CONSTRAINT ers_user_roles_pk PRIMARY KEY (id)
+);
+
+-- ers_schema.ers_users definition
+
+-- Drop table
+
+-- DROP TABLE ers_schema.ers_users;
+
+CREATE TABLE ers_schema.ers_users (
+	id serial NOT NULL,
+	username varchar(100) NOT NULL,
+	"password" varchar(100) NOT NULL,
+	user_first_name varchar(100) NOT NULL,
+	user_last_name varchar(100) NOT NULL,
+	email varchar(100) NOT NULL,
+	user_role_id int4 NOT NULL,
+	CONSTRAINT ers_users_pk PRIMARY KEY (id),
+	CONSTRAINT ers_users_un UNIQUE (username),
+	CONSTRAINT ers_users_un_email UNIQUE (email)
+);
+
+
+-- ers_schema.ers_users foreign keys
+
+ALTER TABLE ers_schema.ers_users ADD CONSTRAINT ers_users_fk FOREIGN KEY (user_role_id) REFERENCES ers_schema.ers_user_roles(id) ON DELETE CASCADE ON UPDATE CASCADE;
