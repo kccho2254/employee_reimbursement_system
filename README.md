@@ -52,10 +52,10 @@ Employees must select the type of reimbursement as: LODGING, TRAVEL, FOOD, or OT
 
 ## Technical Details
 
-* The back-end system shall use `JDBC` connect to an **AWS RDS Postgres database**. 
-* The application shall deploy onto a Tomcat Server. 
-* The middle tier shall use Servlet technology for dynamic Web application development. 
-* The front-end view shall use HTML/JavaScript to make an application that can call server-side components. 
+* The back-end system uses `JDBC` to connect to an **AWS RDS Postgres database**. 
+* The application deploys onto a Tomcat Server. 
+* The middle tier uses Servlet technology for dynamic Web application development. 
+* The front-end view uses HTML/JavaScript to make an application that can call server-side components. 
 
 ## Installation
 
