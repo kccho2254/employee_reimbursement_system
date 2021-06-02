@@ -14,13 +14,11 @@
 - An Employee can view their pending reimbursement requests
 - An Employee can view their resolved reimbursement requests
 - An Employee can view their information
-- An Employee can update their information
 
 #### Manager User Stories
 - A Manager can login
 - A Manager can view the Manager Homepage
 - A Manager can logout
-
 - A Manager can approve/deny pending reimbursement requests
 - A Manager can view all pending requests from all employees
 - A Manager can view all resolved requests from all employees and see which manager resolved it
@@ -29,6 +27,7 @@
 
 
 **State-chart Diagram (Reimbursement Statuses)** 
+
 ![](./imgs/state-chart.jpg)
 
 **Reimbursement Types**
@@ -57,7 +56,27 @@ Employees must select the type of reimbursement as: LODGING, TRAVEL, FOOD, or OT
 * The application shall deploy onto a Tomcat Server. 
 * The middle tier shall use Servlet technology for dynamic Web application development. 
 * The front-end view shall use HTML/JavaScript to make an application that can call server-side components. 
-* The middle tier shall follow proper layered architecture, have reasonable test coverage of the service layer, and implement **log4j** for appropriate logging. 
+
+## Installation
+
+* Start by cloning this repo
+
+``git clone https://github.com/kccho2254/employee_reimbursement_system.git ``
+* Install and create a PostgreSQL 13 database
+* Copy/paste the SQL schema found in the schema.txt file (DBeaver SQL Client Software Recommended)
+* Set the following local environment variables
+
+`Key: AWS_DB2 Value: jdbc:postgresql://<Your database URL>:5432/postgres`
+
+`Key: CONNECTION_USERNAME Value: <Your DB username>`
+
+`Key: CONNECTION_PASSWORD Value: <Your DB password>`
+
+* Install Tomcat 8.5 Web Server
+* At the project directory root folder in your CLI run `mvn clean package`
+* Update Maven Codebase (There are a few ways to do this, Spring Tool Suite IDE provides convenience in doing this easily)
+* Run the projectOne.war file found in the generated /target folder on your Tomcat Server
+* Navigate to http://localhost:8080/ProjectOne to view the login/signup pages
 
 
 
